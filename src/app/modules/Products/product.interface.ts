@@ -1,3 +1,4 @@
+
 export type TProduct = {
     name: string;
     description: string;
@@ -17,7 +18,7 @@ export type TProduct = {
       matureSpread: string;
       plantingZone: string;
     };
-    
+
     careInformation: {
       wateringRequirements: string;
       sunlightRequirements: string;

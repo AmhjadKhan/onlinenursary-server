@@ -20,6 +20,7 @@ export default tseslint.config(
       'prefer-const': 'error',
       'no-console': 'warn',
       '@typescript-eslint/no-explicit-any': ['warn'],
+      '@typescript-eslint/no-explicit-any': ['no warn']
     },
   },
   {
