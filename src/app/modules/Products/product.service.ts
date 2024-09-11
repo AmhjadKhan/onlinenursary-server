@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { TProduct, UpdateStockInput } from "./product.interface";
 import { Product } from "./product.model";
 import { productSearchableFields } from "./product.constant";
+import QueryBuilder from "../../builder/QueryBuilder";
 
 
 
