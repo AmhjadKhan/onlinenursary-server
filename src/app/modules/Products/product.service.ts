@@ -3,16 +3,13 @@ import { TProduct, UpdateStockInput } from "./product.interface";
 import { Product } from "./product.model";
 import { productSearchableFields } from "./product.constant";
 
+
+
+// get all product
 const createProductIntoDB = async (product: TProduct) => {
   const result = await Product.create(product);
   return result;
 };
-
-// get all product
-// const getAllProductsFromDB = async () => {
-//   const result = await Product.find();
-//   return result;
-// };
 
 const getAllProductsFromDB = async (query: Record<string, unknown>) => {
   const productQuery = new QueryBuilder(Product.find(), query)
