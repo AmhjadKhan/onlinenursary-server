@@ -110,10 +110,34 @@ const updateProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getCategoriesProducts = catchAsync(async (req, res) => {
+  const result = await ProductServices.categoriesProductsInDB();
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Products categories retrieved successfully',
+    data: result,
+  });
+});
+
+const updateStockForProducts = catchAsync(async (req, res) => {
+  const result = await ProductServices.updateStockForProductsIntoDB(req.body);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Products categories retrieved successfully',
+    data: result,
+  });
+});
+
 export const ProductControllers = {
-    createProduct,
-    getAllProducts,
-    getSingleProduct,
-    deleteProduct,
-    updateProduct
+  createProduct,
+  getAllProducts,
+  getSingleProduct,
+  updateProduct,
+  deleteProduct,
+  getCategoriesProducts,
+  updateStockForProducts,
   };
