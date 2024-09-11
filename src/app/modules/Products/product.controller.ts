@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import productValidationSchema from "./product.validation";
 import { ProductServices } from "./product.service";
 import { TProduct } from "./product.interface";
-import catchAsync from "../utils/catchAsync";
-import sendResponse from "../utils/sendResponse";
+import catchAsync from "../../utils/catchAsync";
+import sendResponse from "../../utils/sendResponse";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -25,22 +25,16 @@ const createProduct = async (req: Request, res: Response) => {
 };
 
 // For get all products
-const getAllProducts = async (req: Request, res: Response) => {
-    try {
-      const result = await ProductServices.getAllProductsFromDB();
-      res.status(200).json({
-        success: true,
-        message: 'Products fetched successfully!',
-        data: result,
-      });
-    } catch (err: any) {
-      res.status(500).json({
-        success: false,
-        message: err.message || 'something went wrong',
-        error: err,
-      });
-    }
-  };
+const getAllProducts = catchAsync(async (req, res) => {
+  const result = await ProductServices.getAllProductsFromDB(req.query);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Products retrieved successfully',
+    data: result,
+  });
+});
   
   // For Single Product
   const getSingleProduct = async (req: Request, res: Response) => {
