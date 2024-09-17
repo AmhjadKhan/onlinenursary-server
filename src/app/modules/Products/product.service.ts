@@ -73,7 +73,7 @@ const searchProductsInDB = async (term: string) => {
     $or: [
       { name: { $regex: term, $options: 'i' } },
       { description: { $regex: term, $options: 'i' } },
-      { category: { $regex: term, $options: 'i' } },
+      { categoriesName: { $regex: term, $options: 'i' } },
     ],
   });
 
